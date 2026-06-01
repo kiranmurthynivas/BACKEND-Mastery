@@ -92,6 +92,14 @@ app.patch("/posts/:id", (req, res) => {
   res.redirect("/posts");
 });
 
+app.delete("/posts/:id", (req, res) => {
+  const { id } = req.params;
+
+  posts = posts.filter((post) => post.id !== id);
+
+  res.redirect("/posts");
+});
+
 app.listen(PORT , () => {
     console.log(`Server Listening on PORT ${PORT}`);
 })
