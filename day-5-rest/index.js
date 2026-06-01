@@ -29,6 +29,8 @@ app.get("/", (req, res) => {
   res.redirect("/posts");
 });
 
+
+
 app.get("/posts", (req,res)=> {
     res.render("index", {posts});
 })
@@ -50,6 +52,18 @@ app.post("/posts", (req, res) => {
 
   res.redirect("/posts");
 });
+
+app.get("/posts/:id", (req,res) => {
+  const { id } = req.params;
+   const post = posts.find((post) => post.id === id);
+
+  if (!post) {
+    return res.status(404).send("Post not found");
+  }
+
+  res.render("show", { post });
+})
+
 
 
 app.listen(PORT , () => {
