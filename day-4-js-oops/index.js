@@ -6,18 +6,27 @@ const PORT = 3000;
 
 app.set("view engine", "ejs");
 
-const developer = {
-    name : "kiran",
-    role : "System Engineer",
-    skills : ["react" , "express" , "mongodb"],
-    introduce : function() {
-        console.log(`Hi , I am ${this.name} . I am ${this.role}`);
-    } 
-};
+function createDeveloper(name, role, skills) {
+    return {
+        name : name,
+        role : role,
+        skills : skills,
+        introduce: function () {
+            console.log(`Hi this ${this.name} , ${this.role}`)
+        },
+        showSkills: function() {
+            for ( let skill of this.skills) {
+                console.log(`${skill}`);
+            }
+        }
+    }      
+}
+
+const dev1 = createDeveloper("Kiran", "Backend Learner", ["Node.js", "Express.js"]);
 
 app.get("/about", (req, res) => {
     res.render("about", {
-        developer,
+        dev1,
     })
 })
 
