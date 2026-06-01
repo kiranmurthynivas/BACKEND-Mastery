@@ -33,7 +33,23 @@ app.get("/posts", (req,res)=> {
     res.render("index", {posts});
 })
 
+app.get("/posts/new", (req, res) => {
+    res.render("new");
+});
 
+app.post("/posts", (req, res) => {
+  const { username, content } = req.body;
+
+  const newPost = {
+    id: uuidv4(),
+    username,
+    content
+  };
+
+  posts.push(newPost);
+
+  res.redirect("/posts");
+});
 
 
 app.listen(PORT , () => {
