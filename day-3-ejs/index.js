@@ -5,19 +5,15 @@ const PORT = 3000;
 
 app.set("view engine", "ejs");
 
-app.get("/login-status", (req,res) => {
-    res.render("login-status", {
-        isLoggedIn: true,
-        username:  "kiran"
-    });
-});
+app.get("/skills", (req, res) => {
+  const skills = ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "EJS"];
 
-app.get("/results/:marks", (req, res) => {
-    const { marks } =  req.params;
-    res.render("result",{
-        marks : Number(marks)
-    });
+  res.render("skills", {
+    skills
+  });
 });
+    
+
 
 
 app.listen(PORT, () => {
