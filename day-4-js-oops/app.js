@@ -1,31 +1,41 @@
-class Developer {
-    constructor(name , role , skills , experience) {
+class Person {
+    constructor( name , age ) {
         this.name = name;
-        this.role = role;
-        this.skills = skills;
-        this.experience = experience;
-    };
-
-    introduce() {
-        console.log(`This is ${this.name}  Role : ${this.role}  Exp : ${this.experience}`);
-        for( let skill of this.skills) {
-            console.log(skill);
-        }
-    };
-
-    addSkill( skill) {
-        this.skills.push(skill);
+        this.age = age;
     }
 
-    showSkills() {
-        for( let skill of this.skills) {
-            console.log(skill);
-        }
+    introduce() {
+        console.log( ` Name : ${this.name} Age : ${this.age}`);
     }
 }
 
-const dev = new Developer("Kiran", "Backend Developer", ["Node.js"], 0);
+class Student extends Person  {
+    constructor(name , age , course) {
+        super( name , age);
+        this.course = course;
+    }
 
-dev.introduce();
-dev.addSkill("Express.js");
-dev.showSkills();
+    study() {
+        console.log(`Study ${this.course}`);
+    }
+}
+
+class Teacher extends Person  {
+    constructor(name , age , subject) {
+        super( name , age);
+        this.subject = subject;
+    }
+
+    teach() {
+        console.log(`Subject ${this.subject}`);
+    }
+}
+
+const stu = new Student("Kiran" , 23 , "BE");
+const teach = new Teacher("Ahbi" , 19 , "Comman Sense");
+
+stu.introduce();
+stu.study();
+
+teach.introduce();
+teach.teach();
