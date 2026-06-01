@@ -62,9 +62,35 @@ app.get("/posts/:id", (req,res) => {
   }
 
   res.render("show", { post });
-})
+});
 
 
+app.get("/posts/:id/edit", (req, res) => {
+  const { id } = req.params;
+
+  const post = posts.find((post) => post.id === id);
+
+  if (!post) {
+    return res.status(404).send("Post not found");
+  }
+
+  res.render("edit", { post });
+});
+
+app.patch("/posts/:id", (req, res) => {
+  const { id } = req.params;
+  const { content } = req.body;
+
+  const post = posts.find((post) => post.id === id);
+
+  if (!post) {
+    return res.status(404).send("Post not found");
+  }
+
+  post.content = content;
+
+  res.redirect("/posts");
+});
 
 app.listen(PORT , () => {
     console.log(`Server Listening on PORT ${PORT}`);
