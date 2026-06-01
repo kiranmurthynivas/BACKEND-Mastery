@@ -1,22 +1,31 @@
-function Product(name, price, category) {
-  this.name = name;
-  this.price = price;
-  this.category = category;
+class Developer {
+    constructor(name , role , skills , experience) {
+        this.name = name;
+        this.role = role;
+        this.skills = skills;
+        this.experience = experience;
+    };
 
-  Product.prototype.showDetails = function() {
-    console.log(`Name : ${this.name}`);
-    console.log(`Price : ${this.price}`);
-    console.log(`Categorey : ${this.category}`)
-  }
+    introduce() {
+        console.log(`This is ${this.name}  Role : ${this.role}  Exp : ${this.experience}`);
+        for( let skill of this.skills) {
+            console.log(skill);
+        }
+    };
 
-  Product.prototype.applyDiscount = function( val) {
-    this.price = this.price - (this.price * val / 100);
-  } 
+    addSkill( skill) {
+        this.skills.push(skill);
+    }
 
+    showSkills() {
+        for( let skill of this.skills) {
+            console.log(skill);
+        }
+    }
 }
 
-const p1 = new Product("Laptop", 50000, "Electronics");
+const dev = new Developer("Kiran", "Backend Developer", ["Node.js"], 0);
 
-p1.showDetails();
-p1.applyDiscount(10);
-p1.showDetails();
+dev.introduce();
+dev.addSkill("Express.js");
+dev.showSkills();
