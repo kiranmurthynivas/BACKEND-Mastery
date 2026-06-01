@@ -5,24 +5,17 @@ const PORT = 3000;
 
 app.set("view engine", "ejs");
 
-app.get("/about", (req, res) => {
-    res.render("about");
+app.get("/login-status", (req,res) => {
+    res.render("login-status", {
+        isLoggedIn: true,
+        username:  "kiran"
+    });
 });
 
-app.get("/contact", (req, res) => {
-    res.render("contact");
-});
-
-app.get("/home", (req, res) => {
-    res.render("home");
-});
-
-app.get("/profile/:username",(req,res) => {
-    const { username } = req.params; 
-
-    res.render("profile", {
-        username: username,
-        learning: "EJS"
+app.get("/results/:marks", (req, res) => {
+    const { marks } =  req.params;
+    res.render("result",{
+        marks : Number(marks)
     });
 });
 
