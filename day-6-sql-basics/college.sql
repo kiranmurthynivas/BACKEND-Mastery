@@ -1,0 +1,3 @@
+-- Day 35 SQL Basics
+-- Student Course Database
+-- Practiced by Kiran
