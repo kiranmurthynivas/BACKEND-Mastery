@@ -6,7 +6,7 @@ const PORT = 3000;
 app.set("view engine", "ejs");
 
 app.get("/about", (req, res) => {
-    res.render("/about");
+    res.render("about");
 });
 
 app.get("/contact", (req, res) => {
@@ -15,6 +15,15 @@ app.get("/contact", (req, res) => {
 
 app.get("/home", (req, res) => {
     res.render("home");
+});
+
+app.get("/profile/:username",(req,res) => {
+    const { username } = req.params; 
+
+    res.render("profile", {
+        username: username,
+        learning: "EJS"
+    });
 });
 
 
