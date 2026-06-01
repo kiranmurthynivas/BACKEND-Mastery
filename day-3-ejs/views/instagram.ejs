@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= username %> Profile</title>
+</head>
+<body>
+  <h1>@<%= username %></h1>
+  <h2><%= data.name %></h2>
+
+  <p>Followers: <%= data.followers %></p>
+  <p>Following: <%= data.following %></p>
+
+  <h3>Posts</h3>
+  <ul>
+    <% for (let post of data.posts) { %>
+      <li><%= post %></li>
+    <% } %>
+  </ul>
+</body>
+</html>
