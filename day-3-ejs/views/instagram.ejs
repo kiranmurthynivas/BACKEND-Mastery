@@ -4,6 +4,7 @@
   <title><%= username %> Profile</title>
 </head>
 <body>
+  <%- include("includes/navbar") %>
   <h1>@<%= username %></h1>
   <h2><%= data.name %></h2>
 
@@ -16,5 +17,6 @@
       <li><%= post %></li>
     <% } %>
   </ul>
+  <%- include("includes/footer") %>
 </body>
 </html>
