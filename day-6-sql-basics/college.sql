@@ -36,3 +36,31 @@ CREATE TABLE students (
   course_id INT,
   FOREIGN KEY (course_id) REFERENCES courses(id)
 );
+
+
+INSERT INTO courses
+(id, course_name)
+VALUES
+(1, 'Computer Science'),
+(2, 'Electronics'),
+(3, 'Mechanical');
+
+INSERT INTO students
+(id, name, age, course_id)
+VALUES
+(1, 'Kiran', 22, 1),
+(2, 'Rahul', 21, 2),
+(3, 'Sneha', 23, 1),
+(4, 'Asha', 24, 3);
+
+SELECT * FROM students;
+
+SELECT name, age FROM students;
+
+SELECT * FROM courses;
+
+SELECT * FROM students
+WHERE age > 21;
+
+SELECT * FROM students
+WHERE course_id = 1;
