@@ -1,3 +1,7 @@
 -- Day 35 SQL Basics
--- Student Course Database
--- Practiced by Kiran
+-- Student Course Databas-- Practiced by Kiran
+
+CREATE DATABASE college;
+
+USE college;
+
