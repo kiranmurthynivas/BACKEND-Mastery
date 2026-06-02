@@ -59,8 +59,8 @@ SELECT name, age FROM students;
 
 SELECT * FROM courses;
 
-SELECT * FROM students
+SELECT * FROM students;
 WHERE age > 21;
 
-SELECT * FROM students
+SELECT * FROM students;
 WHERE course_id = 1;
