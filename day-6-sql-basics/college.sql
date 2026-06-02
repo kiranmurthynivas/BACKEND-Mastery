@@ -20,3 +20,19 @@ SHOW TABLES;
 
 DESC students;
 
+DROP TABLE IF EXISTS students;
+
+DROP TABLE IF EXISTS courses;
+
+CREATE TABLE courses (
+  id INT PRIMARY KEY,
+  course_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  age INT CHECK (age >= 18),
+  course_id INT,
+  FOREIGN KEY (course_id) REFERENCES courses(id)
+);
