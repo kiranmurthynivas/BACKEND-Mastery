@@ -68,5 +68,12 @@ WHERE course = 'CSE' OR course = 'ECE';
 SELECT * FROM students
 WHERE NOT city = 'Mysuru';
 
+SELECT * FROM students
+ORDER BY marks ASC;
 
+SELECT * FROM students
+ORDER BY marks DESC;
+
+SELECT name, age, marks FROM students
+ORDER BY age ASC, marks DESC;
 
