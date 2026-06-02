@@ -77,3 +77,14 @@ ORDER BY marks DESC;
 SELECT name, age, marks FROM students
 ORDER BY age ASC, marks DESC;
 
+SELECT * FROM students
+LIMIT 3;
+
+SELECT * FROM students
+ORDER BY marks DESC
+LIMIT 3;
+
+SELECT * FROM students
+ORDER BY marks ASC
+LIMIT 2;
+
