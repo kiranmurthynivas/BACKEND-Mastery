@@ -43,3 +43,30 @@ WHERE city = 'Bengaluru';
 
 SELECT name, marks FROM students
 WHERE marks >= 75;
+
+SELECT * FROM students
+WHERE marks != 85;
+
+SELECT * FROM students
+WHERE marks BETWEEN 60 AND 90;
+
+SELECT * FROM students
+WHERE course IN ('CSE', 'ECE');
+
+SELECT * FROM students
+WHERE course NOT IN ('MECH', 'CIVIL');
+
+SELECT * FROM students
+WHERE name LIKE 'S%';
+
+SELECT * FROM students
+WHERE city = 'Bengaluru' AND marks > 70;
+
+SELECT * FROM students
+WHERE course = 'CSE' OR course = 'ECE';
+
+SELECT * FROM students
+WHERE NOT city = 'Mysuru';
+
+
+
