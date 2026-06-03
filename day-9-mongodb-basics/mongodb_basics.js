@@ -103,3 +103,9 @@ db.students.insertOne({
 db.students.find({ "address.city": "Bengaluru" });
 
 db.students.find({ skills: "MongoDB" });
+
+db.students.deleteOne({ name: "Asha" });
+
+db.students.deleteMany({ marks: { $lt: 60 } });
+
+db.students.find();
