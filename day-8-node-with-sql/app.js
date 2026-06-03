@@ -99,6 +99,43 @@ app.get("/users/:id/edit", (req, res) => {
   });
 });
 
+app.patch("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).send("Username and password are required");
+  }
+
+  const findQuery = "SELECT * FROM users WHERE id = ?";
+
+  connection.query(findQuery, [id], (err, result) => {
+    if (err) {
+      return res.status(500).send("Database error");
+    }
+
+    if (result.length === 0) {
+      return res.status(404).send("User not found");
+    }
+
+    const user = result[0];
+
+    if (user.password !== password) {
+      return res.status(403).send("Wrong password");
+    }
+
+    const updateQuery = "UPDATE users SET username = ? WHERE id = ?";
+
+    connection.query(updateQuery, [username, id], (err) => {
+      if (err) {
+        return res.status(500).send("Database error");
+      }
+
+      res.redirect("/users");
+    });
+  });
+});
+
 
 app.listen(PORT , () => {
     console.log(`SERVER LISTENING ON PORT ${PORT}`);
