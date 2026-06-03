@@ -45,3 +45,27 @@ db.students.find({ course: "CSE" });
 db.students.find({ city: "Bengaluru" });
 
 db.students.findOne({ name: "Kiran" });
+
+db.students.find({ marks: { $gt: 80 } });
+
+db.students.find({ marks: { $gte: 70 } });
+
+db.students.find({ age: { $lt: 23 } });
+
+db.students.find({ course: { $in: ["CSE", "ECE"] } });
+
+db.students.find({ course: { $nin: ["MECH"] } });
+
+db.students.find({
+  $and: [
+    { course: "CSE" },
+    { marks: { $gt: 80 } }
+  ]
+});
+
+db.students.find({
+  $or: [
+    { city: "Bengaluru" },
+    { marks: { $gt: 85 } }
+  ]
+});
