@@ -152,3 +152,8 @@ SET city = 'Bangalore'
 WHERE city = 'Bengaluru';
 
 SELECT * FROM students;
+
+DELETE FROM students
+WHERE marks < 50;
+
+SELECT * FROM students;
