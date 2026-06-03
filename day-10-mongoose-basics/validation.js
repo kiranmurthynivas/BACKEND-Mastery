@@ -6,19 +6,17 @@ async function testValidation() {
   await connectDB();
 
   try {
-    const invalidStudent = await Student.create({
-      name: "",
-      age: 15,
-      course: "AI",
-      marks: 120
-    });
+  const updatedStudent = await Student.findOneAndUpdate(
+    { name: "Kiran" },
+    { age: 10 },
+    { new: true, runValidators: true }
+  );
 
-    console.log(invalidStudent);
-  } catch (error) {
-    console.log("Validation error:");
-    console.log(error.message);
-  }
-
+  console.log(updatedStudent);
+} catch (error) {
+  console.log("Update validation error:");
+  console.log(error.message);
+}
   await mongoose.connection.close();
 }
 
