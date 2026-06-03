@@ -26,6 +26,42 @@ app.get("/" , (req, res) => {
 });
 
 
+app.get("/users", (req, res) => {
+  const query = "SELECT id, username, email FROM users";
+
+  connection.query(query, (err, users) => {
+    if (err) {
+      return res.status(500).send("Database error");
+    }
+
+    res.render("users", { users });
+  });
+});
+
+app.get("/users/new", (req, res) => {
+    res.render("new");
+});
+
+app.post("/users", (req, res) => {
+    const { username , email , password } = req.body;
+
+    if(!username || !email || !password ) {
+        return res.status(400).send("All fields are required");
+    }
+
+    const id = randomUUID();
+
+    const query = "INSERT INTO users (id, username, email, password) VALUES (?, ?, ?, ?)";
+
+    connection.query(query, [id, username, email, password], (err) => {
+    if (err) {
+      return res.status(500).send("Database error: " + err.message);
+    }
+    res.redirect("/users");
+  });
+});
+
+
 app.listen(PORT , () => {
     console.log(`SERVER LISTENING ON PORT ${PORT}`);
 });
