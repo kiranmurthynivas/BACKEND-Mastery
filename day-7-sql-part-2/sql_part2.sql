@@ -118,3 +118,18 @@ GROUP BY course;
 SELECT city, MAX(marks) AS highest_marks
 FROM students
 GROUP BY city;
+
+SELECT course, AVG(marks) AS average_marks
+FROM students
+GROUP BY course
+HAVING AVG(marks) > 70;
+
+SELECT course, COUNT(*) AS total_students
+FROM students
+GROUP BY course
+HAVING COUNT(*) >= 2;
+
+SELECT city, COUNT(*) AS total_students
+FROM students
+GROUP BY city
+HAVING COUNT(*) > 1;
