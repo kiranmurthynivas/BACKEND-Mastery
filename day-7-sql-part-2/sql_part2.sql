@@ -157,3 +157,17 @@ DELETE FROM students
 WHERE marks < 50;
 
 SELECT * FROM students;
+
+ALTER TABLE students
+ADD email VARCHAR(100);
+
+ALTER TABLE students
+MODIFY email VARCHAR(150);
+
+ALTER TABLE students
+CHANGE email student_email VARCHAR(150);
+
+ALTER TABLE students
+DROP COLUMN student_email;
+
+DESC students;
