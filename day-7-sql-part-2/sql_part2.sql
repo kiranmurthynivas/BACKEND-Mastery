@@ -133,3 +133,12 @@ SELECT city, COUNT(*) AS total_students
 FROM students
 GROUP BY city
 HAVING COUNT(*) > 1;
+
+
+SELECT course, AVG(marks) AS average_marks
+FROM students
+WHERE marks >= 50
+GROUP BY course
+HAVING AVG(marks) > 70
+ORDER BY average_marks DESC
+LIMIT 2;
