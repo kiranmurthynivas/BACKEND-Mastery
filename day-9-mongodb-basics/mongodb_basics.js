@@ -69,3 +69,20 @@ db.students.find({
     { marks: { $gt: 85 } }
   ]
 });
+
+db.students.updateOne(
+  { name: "Kiran" },
+  { $set: { marks: 90 } }
+);
+
+db.students.updateMany(
+  { course: "CSE" },
+  { $set: { department: "Computer Science" } }
+);
+
+db.students.updateOne(
+  { name: "Rahul" },
+  { $set: { city: "Bengaluru" } }
+);
+
+db.students.find();
