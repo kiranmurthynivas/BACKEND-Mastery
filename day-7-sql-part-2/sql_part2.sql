@@ -142,3 +142,13 @@ GROUP BY course
 HAVING AVG(marks) > 70
 ORDER BY average_marks DESC
 LIMIT 2;
+
+UPDATE students
+SET marks = 90
+WHERE id = 1;
+
+UPDATE students
+SET city = 'Bangalore'
+WHERE city = 'Bengaluru';
+
+SELECT * FROM students;
