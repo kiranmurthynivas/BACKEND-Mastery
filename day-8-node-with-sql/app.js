@@ -61,6 +61,25 @@ app.post("/users", (req, res) => {
   });
 });
 
+app.get("/users/:id", (req, res) => {
+  const { id } = req.params;
+
+  const query = "SELECT id, username, email FROM users WHERE id = ?";
+
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      return res.status(500).send("Database error");
+    }
+
+    if (result.length === 0) {
+      return res.status(404).send("User not found");
+    }
+
+    const user = result[0];
+    res.render("show", { user });
+  });
+});
+
 
 app.listen(PORT , () => {
     console.log(`SERVER LISTENING ON PORT ${PORT}`);
