@@ -86,3 +86,20 @@ db.students.updateOne(
 );
 
 db.students.find();
+
+db.students.insertOne({
+  name: "Divya",
+  age: 22,
+  course: "CIVIL",
+  marks: 78,
+  address: {
+    city: "Bengaluru",
+    state: "Karnataka",
+    pincode: 560001
+  },
+  skills: ["JavaScript", "Node.js", "MongoDB"]
+});
+
+db.students.find({ "address.city": "Bengaluru" });
+
+db.students.find({ skills: "MongoDB" });
