@@ -37,3 +37,11 @@ db.students.insertMany([
     marks: 88
   }
 ]);
+
+db.students.find();
+
+db.students.find({ course: "CSE" });
+
+db.students.find({ city: "Bengaluru" });
+
+db.students.findOne({ name: "Kiran" });
