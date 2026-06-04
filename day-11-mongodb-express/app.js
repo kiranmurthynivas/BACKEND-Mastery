@@ -60,6 +60,39 @@ app.post("/chats", async (req, res) => {
   }
 });
 
+app.get("/chats/:id/edit", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const chat = await Chat.findById(id);
+
+    if (!chat) {
+      return res.status(404).send("Chat not found");
+    }
+
+    res.render("edit", { chat });
+  } catch (error) {
+    res.status(500).send("Something went wrong");
+  }
+});
+
+app.put("/chats/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { message } = req.body;
+
+    await Chat.findByIdAndUpdate(
+      id,
+      { message },
+      { runValidators: true }
+    );
+
+    res.redirect("/chats");
+  } catch (error) {
+    res.status(400).send("Chat update failed: " + error.message);
+  }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
