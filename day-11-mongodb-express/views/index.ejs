@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Chats</title>
+</head>
+<body>
+    <h1>All Chats</h1>
+    <a href="/chats/new">Create New Chat</a>
+
+    <hr>
+
+    <% for(let chat of chats) { %>
+        <div>
+            <p><strong>From:</strong> <%= chat.from %></p>
+            <p><strong>To:</strong> <%= chat.to %></p>
+            <p><strong>Message:</strong> <%= chat.message %></p>
+            <p><strong>Created:</strong> <%= chat.createdAt.toLocaleString() %></p>
+
+            <a href="/chats/<%= chat._id %>/edit">Edit</a>
+
+            <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
+                <button type="submit">Delete</button>
+            </form>
+            <hr>
+        </div>
+    <% } %>
+</body>
+</html>
