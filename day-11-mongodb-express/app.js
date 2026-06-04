@@ -42,6 +42,24 @@ app.get("/chats/new", (req, res) => {
   res.render("new");
 });
 
+app.post("/chats", async (req, res) => {
+  try {
+    const { from, to, message } = req.body;
+
+    const newChat = new Chat({
+      from,
+      to,
+      message
+    });
+
+    await newChat.save();
+
+    res.redirect("/chats");
+  } catch (error) {
+    res.status(400).send("Chat creation failed: " + error.message);
+  }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
