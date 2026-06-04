@@ -3,22 +3,22 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 require("dotenv").config();
 
-const chat = require("./models/Chat");
+const Chat = require("./models/Chat");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
 async function connectDB() {
     try {
-        mongoose.connect(process.env.MONGO_URL);
-        console.log("MongoDb connected successsully");
-    } catch(error) {
+        await mongoose.connect(process.env.MONGO_URL);
+        console.log("MongoDB connected successfully");
+    } catch (error) {
         console.log("MongoDB connection failed:", error.message);
     }
 }
@@ -26,9 +26,23 @@ async function connectDB() {
 connectDB();
 
 app.get("/", (req, res) => {
-    res.redirect("/charts");
-})
+    res.redirect("/chats");
+});
 
-app.listen(PORT, ()=> {
+app.get("/chats", async (req, res) => {
+    try {
+        const chats = await Chat.find();
+        res.render("index", { chats });
+    } catch (error) {
+        res.status(500).send("Something went wrong");
+    }
+});
+
+app.get("/chats/new", (req, res) => {
+  res.render("new");
+});
+
+
+app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
-})
+});
