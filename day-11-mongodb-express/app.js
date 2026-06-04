@@ -93,6 +93,18 @@ app.put("/chats/:id", async (req, res) => {
   }
 });
 
+app.delete("/chats/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Chat.findByIdAndDelete(id);
+
+    res.redirect("/chats");
+  } catch (error) {
+    res.status(500).send("Chat delete failed");
+  }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
